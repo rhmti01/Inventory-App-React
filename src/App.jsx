@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Toaster } from "react-hot-toast";
+import "./index.css";
+import { useState } from "react";
+import CategoriesFrom from "./Components/CategoriesFrom";
+import ProductsFrom from "./Components/ProductsFrom";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="font-outfit bg-primary-900   flex items-center justify-start flex-col w-full ">
+      <div className="  mt-14  flex items-center justify-center ">
+        <h1 className=" leading-9 text-zinc-100 zz:text-4xl  ww:text-[28px] xx:text-2xl dd:text-[22px] mx-4  ss:text-xl text-wrap text-center w-full font-bold  ">
+          Inventory App React
+        </h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <CategoriesFrom categories={categories} setCategories={setCategories} />
+      <ProductsFrom
+        categories={categories}
+        products={products}
+        setProducts={setProducts}
+      />
+      <Toaster/>
+    </div>
+  );
 }
 
-export default App
+export default App;
