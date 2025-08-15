@@ -2,11 +2,11 @@
 @plugin "@tailwindcss/forms";
 
 @theme {
-  --color-primary-900: rgb(18, 24, 32);  
-  --color-primary-800: rgb(28, 32, 40);   
-  --color-primary-700: rgb(45, 40, 38);   
+  --color-primary-900: rgb(18, 24, 32);
+  --color-primary-800: rgb(28, 32, 40);
+  --color-primary-700: rgb(45, 40, 38);
   --color-primary-600: rgb(60, 50, 48);
-  --color-primary-500: rgb(80, 65, 60);   
+  --color-primary-500: rgb(80, 65, 60);
   --color-primary-400: rgb(100, 80, 75);
   --color-primary-300: rgb(140, 120, 110);
   --color-primary-200: rgb(180, 160, 150);
@@ -29,5 +29,43 @@
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAYAAAAMJL+VAAAABGdBTUEAALGPC/xhBQAAAQtJREFUOBG1lEEOgjAQRalbGj2OG9caOACn4ALGtfEuHACiazceR1PWOH/CNA3aMiTaBDpt/7zPdBKy7M/DCL9pGkvxxVp7KsvyJftL5rZt1865M+Ucq6pyyF3hNcI7Cuu+728QYn/JQA5yKaempxuZmQngOwEaYx55nu+1lQh8GIatMGi+01NwBcEmhxBqK4nAPZJ78K0KKFAJmR3oPp8+Iwgob0Oa6+TLoeCvRx+mTUYf/FVBGTPRwDkfLxnaSrRwcH0FWhNOmrkWYbE2XEicqgSa1J0LQ+aPCuQgZiLnwewbGuz5MGoAhcIkCQcjaTBjMgtXGURMVHC1wcQEy0J+Zlj8bKAnY1/UzDe2dbAVqfXn6wAAAABJRU5ErkJggg==");
     background-size: 0.7rem;
     background-position: right 0.7rem center;
+  }
+
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: #888888 #1a262d;
+  }
+
+  body::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: #1a262d;
+    border-radius: 10px;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: 10px;
+    border: 2px solid #1a262d;
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa;
+  }
+
+  div::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  div::-webkit-scrollbar-track {
+    background: #1a262d;
+    border-radius: 8px;
+  }
+
+  div::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: 8px;
   }
 }

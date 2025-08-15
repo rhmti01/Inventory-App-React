@@ -54,8 +54,9 @@ function ProductsFrom({ products, setProducts, categories }) {
     const newProduct = {
       ...data,
       categoryId: selectedCategory.id,
-      createdAt: new Date().toISOString(),
+      createdAt: new Date(),
       id: new Date().getTime(),
+      quantity : quantity.count ,
     };
 
     setProducts((prevProducts) => [...prevProducts, newProduct]);
@@ -65,11 +66,11 @@ function ProductsFrom({ products, setProducts, categories }) {
   console.log(products);
 
   return (
-    <section className=" bg-white/ h-auto mt-10 mb-40 flex  justify-center flex-col py-4 zz:max-w-[600px] xx:max-w-[92%] ss:max-w-[90%] w-full ">
-      <a className=" font-medium text-stone-200 zz:text-[21px] ww:text-[19px] xx:text-[17px] dd:text-[15px] ss:text-[14px] ml-3 ">
+    <section className=" bg-white/ h-auto mt-10 flex  justify-center flex-col py-4 zz:max-w-[700px] xx:max-w-[92%] ss:max-w-[90%] w-full ">
+      <a className=" font-medium text-stone-200 zz:text-[20.5px] ww:text-[18.5px] xx:text-[17px] dd:text-[15px] ss:text-[14px]  ml-3 ">
         Add New Product
       </a>
-      <div className="bg-primary-800 h-auto flex items-start justify-start flex-col w-full my-4 ss:my-3 zz:rounded-3xl ww:rounded-2xl xx:rounded-xl ss:rounded-lg ">
+      <div className="bg-primary-800 h-auto flex items-start justify-start flex-col w-full my-4 ss:my-3 zz:rounded-3xl ww:rounded-2xl ss:rounded-xl  ">
         <form
           onSubmit={handleSubmit(addNewProductHandler)}
           className=" bg-red-400/ xx:py-4 ss:py-3  zz:px-5 ww:px-4 xx:px-3.5 dd:px-3 ss:px-3 flex  flex-col w-full "
@@ -87,7 +88,7 @@ function ProductsFrom({ products, setProducts, categories }) {
                     message: "Only English - 4-15 letters!",
                   },
                 })}
-                className=" zz:mt-3 ww:mt-2 xx:mt-1.5 ss:mt-1 w-full  bg-transparent outline-none border-primary-500 border-2 text-stone-100  px-2 xx:py-2 dd:py-1 ss:py-1 xx:rounded-xl ss:rounded-lg focus:border-primary-300 ring-0 "
+                className=" zz:mt-3 ww:mt-2 xx:mt-1.5 ss:mt-1 w-full  bg-transparent outline-none border-primary-500 border-2 text-stone-100  px-2 xx:py-2 dd:py-1 ss:py-1  ss:rounded-xl focus:border-primary-300 ring-0 "
                 type="text"
               />
               {errors.title && (
@@ -102,7 +103,7 @@ function ProductsFrom({ products, setProducts, categories }) {
               </h3>
               <div
                 id="quantityCenter"
-                className=" bg-primary-800 flex items-center justify-between  zz:mt-3 ww:mt-2 xx:mt-1.5 ss:mt-1 w-full  border-primary-500 border-2 text-stone-100  px-2.5 xx:h-11 dd:h-9 ss:h-9 xx:rounded-xl ss:rounded-lg "
+                className=" bg-primary-800 flex items-center justify-between  zz:mt-3 ww:mt-2 xx:mt-1.5 ss:mt-1 w-full  border-primary-500 border-2 text-stone-100  px-2.5 xx:h-11 dd:h-9 ss:h-9 ss:rounded-xl "
                 type="text"
               >
                 <button
@@ -168,7 +169,7 @@ function ProductsFrom({ products, setProducts, categories }) {
                 })}
                 id="productLocations"
                 defaultValue="none"
-                className=" form-select pr-8 pl-3 bg-no-repeat appearance-none w-full ww:text-base xx:text-[14px] ss:text-[13px] zz:mt-3 ww:mt-2 xx:mt-1.5 ss:mt-1 border-primary-500 border-2  text-stone-100 text-[15px] outline-none focus:ring-0 font-normal xx:rounded-xl ss:rounded-lg ring-0 focus:border-primary-300 block xx:p-2.5 ss:p-1.5 bg-primary-800 "
+                className=" form-select pr-8 pl-3 bg-no-repeat appearance-none w-full ww:text-base xx:text-[14px] ss:text-[13px] zz:mt-3 ww:mt-2 xx:mt-1.5 ss:mt-1 border-primary-500 border-2  text-stone-100 text-[15px] outline-none focus:ring-0 font-normal ss:rounded-xl ring-0 focus:border-primary-300 block xx:p-2.5 ss:p-1.5 bg-primary-800 "
               >
                 <option value="none">- select location - </option>
                 <option value="BDG">BDG</option>
@@ -192,7 +193,7 @@ function ProductsFrom({ products, setProducts, categories }) {
                 })}
                 id="ProductsSelect"
                 defaultValue="none"
-                className=" form-select pr-8 pl-3 bg-no-repeat appearance-none w-full ww:text-base xx:text-[14px] ss:text-[13px] zz:mt-3 ww:mt-2 xx:mt-1.5 ss:mt-1 border-primary-500 border-2  text-stone-100 text-[15px] outline-none focus:ring-0 font-normal xx:rounded-xl ss:rounded-lg ring-0 focus:border-primary-300 block xx:p-2.5 ss:p-1.5 bg-primary-800 "
+                className=" form-select pr-8 pl-3 bg-no-repeat appearance-none w-full ww:text-base xx:text-[14px] ss:text-[13px] zz:mt-3 ww:mt-2 xx:mt-1.5 ss:mt-1 border-primary-500 border-2  text-stone-100 text-[15px] outline-none focus:ring-0 font-normal  ss:rounded-xl ring-0 focus:border-primary-300 block xx:p-2.5 ss:p-1.5 bg-primary-800 "
               >
                 <option value="none">- select category -</option>
                 {categories.map((c) => {
@@ -213,7 +214,7 @@ function ProductsFrom({ products, setProducts, categories }) {
           <div className=" bg-blue-400/ h-auto flex items-center justify-between w-full mt-6 ">
             <button
               id="addNewProductBtn"
-              className=" cursor-pointer zz:text-base ww:text-[15px] xx:text-[14px] dd:text-[13px] ss:text-[12.5px] zz:py-2.5 ww:py-2 xx:py-2 ss:py-1.5 w-full py-2.5  text-main bg-primary-300 border-2 border-primary-300 duration-300 hover:bg-primary-200 hover:border-primary-200 xx:rounded-xl ss:rounded-lg font-semibold "
+              className=" cursor-pointer zz:text-base ww:text-[15px] xx:text-[14px] dd:text-[13px] ss:text-[12.5px] zz:py-2.5 ww:py-2 xx:py-2 ss:py-1.5 w-full py-2.5  text-main bg-primary-300 border-2 border-primary-300 duration-300 hover:bg-primary-200 hover:border-primary-200 ss:rounded-xl font-semibold "
             >
               Add Product
             </button>

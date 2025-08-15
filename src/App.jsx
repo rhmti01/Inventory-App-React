@@ -3,6 +3,7 @@ import "./index.css";
 import { useState } from "react";
 import CategoriesFrom from "./Components/CategoriesFrom";
 import ProductsFrom from "./Components/ProductsFrom";
+import Products from "./Components/Products";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -21,6 +22,7 @@ function App() {
         products={products}
         setProducts={setProducts}
       />
+      <Products products={products} />
       <Toaster/>
     </div>
   );
