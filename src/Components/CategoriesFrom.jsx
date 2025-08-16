@@ -1,8 +1,10 @@
 import { Category } from "iconsax-react";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useCategories } from "../Context/CategoriesContext";
 
-function CategoriesFrom({ categories, setCategories }) {
+function CategoriesFrom() {
+  const {categories , setCategories} = useCategories()
   const {
     register,
     handleSubmit,

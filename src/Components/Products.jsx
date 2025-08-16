@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import ProductsList from "./ProductsList";
+import { useProducts } from "../Context/ProductsContext";
 
-function Products({ products }) {
+function Products() {
+  const {products , setProducts} = useProducts()
   const [searchValue, setSearchValue] = useState("");
   const [sortValue, setSortValue] = useState("newest");
   console.log(products.length);
@@ -38,6 +40,7 @@ function Products({ products }) {
       {/* products list */}
       <ProductsList
         products={products}
+        setProducts={setProducts}
         searchValue={searchValue}
         sortValue={sortValue}
       />

@@ -1,8 +1,12 @@
 import React, { useEffect, useReducer } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useProducts } from "../Context/ProductsContext";
+import { useCategories } from "../Context/CategoriesContext";
 
-function ProductsFrom({ products, setProducts, categories }) {
+function ProductsFrom() {
+  const {products , setProducts} = useProducts()
+  const {categories} = useCategories()
   const quantityReducer = (state, action) => {
     switch (action.type) {
       case "increment":

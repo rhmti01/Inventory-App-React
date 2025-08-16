@@ -1,16 +1,22 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
+import { useProducts } from "../Context/ProductsContext";
 
-function ProductsList({ products, searchValue, sortValue }) {
-  const filteredAndSortedProducts = useMemo(() => {
+function ProductsList({ searchValue, sortValue }) {
+  const {products , setProducts} = useProducts()
+  const [filteredProducts, setFilteredProducts] = useState(products);
+
+  const deleteProduct = (removedProductId) => {
+    setProducts((prev) => prev.filter((p) => p.id !== removedProductId));
+  };
+
+  useEffect(() => {
     const normalizedSearchTerm = searchValue.toLowerCase().trim();
 
-    // Filter
     let result = products.filter((product) =>
       product.title.toLowerCase().includes(normalizedSearchTerm)
     );
 
-    // Sort
     const sortFunctions = {
       newest: (a, b) => b.id - a.id,
       oldest: (a, b) => a.id - b.id,
@@ -24,10 +30,10 @@ function ProductsList({ products, searchValue, sortValue }) {
       result = [...result].sort(sortFunctions[sortValue]);
     }
 
-    return result;
+    setFilteredProducts(result);
   }, [products, searchValue, sortValue]);
 
-  if (filteredAndSortedProducts.length < 1) {
+  if (filteredProducts.length < 1) {
     return (
       <div className="h-52 w-full flex justify-center items-center">
         <p className="text-white font-medium text-xl">
@@ -40,7 +46,7 @@ function ProductsList({ products, searchValue, sortValue }) {
   return (
     <div className="w-full overflow-x-auto mt-8">
       <table className="min-w-[700px] rounded-xl overflow-hidden">
-        <thead className="bg-[#1b2127] text-white font-medium ww:text-[16px] xx:text-[15.5px] dd:text-[14.5px] ss:text-[13.5px]">
+        <thead className="bg-[#1b2127] text-white font-medium">
           <tr>
             <th className="py-3 px-3 text-center">Name</th>
             <th className="py-3 px-3 text-center">Location</th>
@@ -51,8 +57,12 @@ function ProductsList({ products, searchValue, sortValue }) {
           </tr>
         </thead>
         <tbody>
-          {filteredAndSortedProducts.map((product) => (
-            <ProductItem key={product.createdAt} {...product} />
+          {filteredProducts.map((product) => (
+            <ProductItem
+              key={product.createdAt}
+              {...product}
+              deleteProduct={deleteProduct}
+            />
           ))}
         </tbody>
       </table>
