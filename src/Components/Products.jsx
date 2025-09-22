@@ -6,7 +6,6 @@ function Products() {
   const {products , setProducts} = useProducts()
   const [searchValue, setSearchValue] = useState("");
   const [sortValue, setSortValue] = useState("newest");
-  console.log(products.length);
 
   return (
     <section className="mt-10 mb-32 flex items-start justify-center flex-col w-full mx-auto zz:max-w-[700px] ww:max-w-[92%] xx:max-w-[94%] ss:w-[90%]">
@@ -25,6 +24,7 @@ function Products() {
           className="ww:text-base xx:text-[15px] dd:text-[14px] ss:text-[13px] zz:w-52 ww:w-40 dd:w-32 xx:w-28 ss:w-24 bg-transparent outline-none border-primary-500 border-2 text-stone-100 xx:px-3 xx:py-2 dd:px-2 dd:py-1.5 ss:p-1.5 ss:rounded-xl focus:border-primary-300 ring-0 "
         />
         <select
+        aria-label="sort-products"
           id="sort"
           value={sortValue}
           onChange={(e) => setSortValue(e.target.value)}

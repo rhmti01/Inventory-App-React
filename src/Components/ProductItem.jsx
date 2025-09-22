@@ -1,8 +1,7 @@
 import React from "react";
-import { Edit, Trash } from "iconsax-react";
+import {Trash } from "iconsax-react";
 
 function ProductItem({ createdAt, title, location, category, quantity , id , deleteProduct}) {
-  console.log(createdAt);
 
   return (
     <tr className="border-t-[1px] border-zinc-600 bg-[#1c232c] text-white ww:text-[15.5px] xx:text-[15px] dd:text-[14px] ss:text-[13px]">

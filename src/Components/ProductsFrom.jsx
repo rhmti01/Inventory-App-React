@@ -5,7 +5,7 @@ import { useProducts } from "../Context/ProductsContext";
 import { useCategories } from "../Context/CategoriesContext";
 
 function ProductsFrom() {
-  const {products , setProducts} = useProducts()
+  const {setProducts} = useProducts()
   const {categories} = useCategories()
   const quantityReducer = (state, action) => {
     switch (action.type) {
@@ -67,13 +67,12 @@ function ProductsFrom() {
     reset();
     dispatch({ type: "reset" });
   };
-  console.log(products);
 
   return (
     <section className=" bg-white/ h-auto mt-10 flex  justify-center flex-col py-4 zz:max-w-[700px] xx:max-w-[92%] ss:max-w-[90%] w-full ">
-      <a className=" font-medium text-stone-200 zz:text-[20.5px] ww:text-[18.5px] xx:text-[17px] dd:text-[15px] ss:text-[14px]  ml-3 ">
+      <h2 className=" font-medium text-stone-200 zz:text-[20.5px] ww:text-[18.5px] xx:text-[17px] dd:text-[15px] ss:text-[14px]  ml-3 ">
         Add New Product
-      </a>
+      </h2>
       <div className="bg-primary-800 h-auto flex items-start justify-start flex-col w-full my-4 ss:my-3 zz:rounded-3xl ww:rounded-2xl ss:rounded-xl  ">
         <form
           onSubmit={handleSubmit(addNewProductHandler)}
@@ -111,6 +110,7 @@ function ProductsFrom() {
                 type="text"
               >
                 <button
+                  aria-label="quantity-dec"
                   type="button"
                   onClick={() => dispatch({ type: "decrement" })}
                   className="  toggleBtn cursor-pointer flex items-center justify-center p-1 rounded-full border-primary-600  "
@@ -138,6 +138,7 @@ function ProductsFrom() {
                   {quantity.count}
                 </p>
                 <button
+                  aria-label="quantity-inc"
                   type="button"
                   onClick={() => dispatch({ type: "increment" })}
                   className="toggleBtn cursor-pointer  flex items-center justify-center p-1 rounded-full border-primary-600  "
@@ -167,6 +168,7 @@ function ProductsFrom() {
                 Location
               </h3>
               <select
+              aria-label="product-location"
                 {...register("location", {
                   validate: (value) =>
                     value !== "none" || "Location is required!",
@@ -195,6 +197,7 @@ function ProductsFrom() {
                   validate: (value) =>
                     value !== "none" || "Category is required!",
                 })}
+                aria-label="category-select"
                 id="ProductsSelect"
                 defaultValue="none"
                 className=" form-select pr-8 pl-3 bg-no-repeat appearance-none w-full ww:text-base xx:text-[14px] ss:text-[13px] zz:mt-3 ww:mt-2 xx:mt-1.5 ss:mt-1 border-primary-500 border-2  text-stone-100 text-[15px] outline-none focus:ring-0 font-normal  ss:rounded-xl ring-0 focus:border-primary-300 block xx:p-2.5 ss:p-1.5 bg-primary-800 "

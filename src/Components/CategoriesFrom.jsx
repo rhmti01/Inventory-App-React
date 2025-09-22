@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useCategories } from "../Context/CategoriesContext";
 
 function CategoriesFrom() {
-  const {categories , setCategories} = useCategories()
+  const {setCategories} = useCategories()
   const {
     register,
     handleSubmit,
@@ -23,13 +23,12 @@ function CategoriesFrom() {
     setCategories((prevCategories) => [...prevCategories, newCategory]);
     reset();
   };
-  console.log(categories);
 
   return (
     <section className=" bg-white/ h-auto mt-16 flex  justify-center flex-col zz:py-4 ww:py-3 zz:max-w-[700px] xx:max-w-[92%] ss:max-w-[90%] w-full ">
-      <a className=" font-medium text-stone-200 zz:text-[20.5px] ww:text-[18.5px] xx:text-[17px] dd:text-[15px] ss:text-[14px]   text-left ml-3  ">
+      <h1 className=" font-medium text-stone-200 zz:text-[20.5px] ww:text-[18.5px] xx:text-[17px] dd:text-[15px] ss:text-[14px]   text-left ml-3  ">
         Add New Category
-      </a>
+      </h1>
       <form
         onSubmit={handleSubmit(addNewCategoryHandler)}
         className="bg-primary-800 h-auto flex items-start justify-start flex-col w-full xx:my-4 ss:my-3 zz:rounded-3xl ww:rounded-2xl ss:rounded-xl  "
@@ -72,7 +71,7 @@ function CategoriesFrom() {
               })}
               className=" resize-none zz:mt-3 ww:mt-2 xx:mt-1.5 ss:mt-1  w-full  xx:text-base dd:text-[14px] bg-transparent outline-none border-primary-500 border-2 text-stone-100  px-2 py-2 ss:rounded-xl  focus:border-primary-300 ring-0 "
               type="text"
-            ></input>
+            />
             {errors.description && (
               <span className="text-red-500 mm:text-[13px] xx:text-[14px] xl:text-[14.5px] text-left block text-sm m-2  ">
                 {errors.description.message}
